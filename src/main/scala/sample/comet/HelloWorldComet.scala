@@ -9,9 +9,11 @@ import net.liftweb.http.js.JsCmds._
 import actor._
 import akka.actor._
 
+import snippet.successMsg
+
 class HelloWorldComet extends AkkaCometActor {
   def render =
-    "#button" #> SHtml.ajaxButton("test", () => doRequest)
+    "#button [onclick]" #> SHtml.ajaxInvoke(() => doRequest)
 
   private def doRequest = {
     HelloWorldActorCaller.actor ! Hello("'Comet Lift Snippet'")
@@ -21,7 +23,7 @@ class HelloWorldComet extends AkkaCometActor {
   override def lowPriority = {
     case value: String =>
       partialUpdate(
-        SetHtml("message", Text(value)))
+        SetHtml("message", successMsg(value)))
   }
 }
 

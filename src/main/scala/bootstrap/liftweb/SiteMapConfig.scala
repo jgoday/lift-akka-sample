@@ -7,6 +7,7 @@ object SiteMapConfig {
   def initFromBoot {
     LiftRules.setSiteMap(
       SiteMap(
+        Menu("index") / "index",
         Menu("hello") / "hello_sync",
         Menu("hello comet") / "hello_comet",
         Menu("hello remote") / "hello_remote"

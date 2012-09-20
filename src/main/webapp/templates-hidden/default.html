@@ -4,12 +4,41 @@
     <title>Lift and akka</title>
     <lift:css.blueprint />
     <lift:css.fancyType />
+
+    <link href="http://twitter.github.com/bootstrap//assets/css/bootstrap.css" rel="stylesheet" />
     <script id="jquery" src="/classpath/jquery.js" type="text/javascript" />
+    <style type="text/css">
+.header {
+  margin-bottom: 70px;
+  height: 30px;
+}
+
+.clean {
+  margin: 20px;
+}
+    </style>
   </head>
   <body>
-    <div class="container">
-      <div id="content">
-        <lift:bind name="content" />
+    <div class="header">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <h2>Lift akka sample</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <lift:embed what="/templates-hidden/menu" />
+        </div>
+
+        <div class="span9">
+          <div class="clean">
+            <div id="content">
+              <lift:bind name="content" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

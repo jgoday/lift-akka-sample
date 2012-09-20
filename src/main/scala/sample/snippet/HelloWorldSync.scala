@@ -1,8 +1,6 @@
 package sample
 package snippet
 
-import scala.xml.Text
-
 import net.liftweb.common.Logger
 import net.liftweb.util.BindHelpers._
 import net.liftweb.http._
@@ -16,11 +14,8 @@ import akka.util.Timeout
 import akka.util.duration._
 
 class HelloWorldSync extends Logger {
-  def hello = {
-    "#button" #> SHtml.ajaxButton(
-      "test", () => doHelloWorld) andThen
-        SHtml.makeFormsAjax
-  }
+  def hello =
+    "#button [onclick]" #> SHtml.ajaxInvoke(() => doHelloWorld)
 
   private def doHelloWorld = {
     implicit val timeout = Timeout(10 seconds)
@@ -28,6 +23,6 @@ class HelloWorldSync extends Logger {
     val msg = Await.result[String](
       future.mapTo[String], 10 seconds)
 
-    SetHtml("message", Text(msg))
+    SetHtml("message", successMsg(msg))
   }
 }
