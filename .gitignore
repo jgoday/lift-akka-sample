@@ -1,3 +1,7 @@
 target
 project/target
 project/project
+remote-akka-service/target
+remote-akka-service/project/target
+remote-akka-service/remote-service.sublime-project
+remote-akka-service/remote-service.sublime-workspace

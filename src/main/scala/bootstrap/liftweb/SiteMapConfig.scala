@@ -8,7 +8,8 @@ object SiteMapConfig {
     LiftRules.setSiteMap(
       SiteMap(
         Menu("hello") / "hello_sync",
-        Menu("hello comet") / "hello_comet"
+        Menu("hello comet") / "hello_comet",
+        Menu("hello remote") / "hello_remote"
       ))
   }
 }

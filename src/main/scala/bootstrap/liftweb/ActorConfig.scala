@@ -19,6 +19,7 @@ object ActorConfig {
 
     LiftRules.unloadHooks.append(() => {
       actor ! Stop
+      HelloWorldActorCaller.remoteSystem.shutdown
       system.shutdown
     })
 

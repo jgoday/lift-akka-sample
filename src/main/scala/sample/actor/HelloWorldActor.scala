@@ -1,8 +1,10 @@
 package sample
 package actor
 
-import akka.actor._
 import net.liftweb.common.Logger
+
+import akka.actor._
+import com.typesafe.config.ConfigFactory
 
 case object Start
 case object Stop
@@ -21,6 +23,12 @@ class HelloWorldActor extends Actor with Logger {
 
 object HelloWorldActorCaller {
   val system = ActorSystem("Sample")
+  val remoteSystem = ActorSystem("LookupHelloService",
+      ConfigFactory.load.getConfig("remotelookup"))
+
+  def remoteActor =
+    remoteSystem.actorFor(
+      "akka://HelloService@127.0.1.1:2552/user/hello")
 
   def actor =
     system.actorOf(Props[HelloWorldActor])

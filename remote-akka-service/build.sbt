@@ -1,4 +1,4 @@
-name := "lift-akka"
+name := "lift-akka-sample-remote-service"
 
 version := "0.1"
 
@@ -7,15 +7,10 @@ scalaVersion := "2.9.2"
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
 libraryDependencies ++= {
-  val liftVersion = "2.5-M1"
   val akkaVersion = "2.0.3"
   List(
-    "net.liftweb" %% "lift-webkit" % liftVersion,
     "com.typesafe.akka" % "akka-actor" % akkaVersion,
     "com.typesafe.akka" % "akka-remote" % akkaVersion,
-    "org.eclipse.jetty" % "jetty-webapp" % "8.0.4.v20111024" % "container",
-    "ch.qos.logback" % "logback-classic" % "0.9.26" % "compile->default"
+    "com.typesafe.akka" % "akka-kernel" % akkaVersion
   )
 }
-
-seq(webSettings :_*)
